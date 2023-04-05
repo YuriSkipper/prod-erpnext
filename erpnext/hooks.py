@@ -30,6 +30,10 @@ doctype_js = {
 
 override_doctype_class = {"Address": "erpnext.accounts.custom.address.ERPNextAddress"}
 
+override_whitelisted_methods = {
+	"frappe.www.contact.send_message": "erpnext.templates.utils.send_message"
+}
+
 welcome_email = "erpnext.setup.utils.welcome_email"
 
 # setup wizard
@@ -276,7 +280,7 @@ has_website_permission = {
 before_tests = "erpnext.setup.utils.before_tests"
 
 standard_queries = {
-	"Customer": "erpnext.selling.doctype.customer.customer.get_customer_list",
+	"Customer": "erpnext.controllers.queries.customer_query",
 }
 
 doc_events = {
