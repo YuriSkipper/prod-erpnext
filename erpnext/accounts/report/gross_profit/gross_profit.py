@@ -250,7 +250,7 @@ def get_columns(group_wise_columns, filters):
 				"label": _("Warehouse"),
 				"fieldname": "warehouse",
 				"fieldtype": "Link",
-				"options": "warehouse",
+				"options": "Warehouse",
 				"width": 100,
 			},
 			"qty": {"label": _("Qty"), "fieldname": "qty", "fieldtype": "Float", "width": 80},
@@ -305,7 +305,8 @@ def get_columns(group_wise_columns, filters):
 			"sales_person": {
 				"label": _("Sales Person"),
 				"fieldname": "sales_person",
-				"fieldtype": "Data",
+				"fieldtype": "Link",
+				"options": "Sales Person",
 				"width": 100,
 			},
 			"allocated_amount": {
@@ -326,14 +327,14 @@ def get_columns(group_wise_columns, filters):
 				"label": _("Customer Group"),
 				"fieldname": "customer_group",
 				"fieldtype": "Link",
-				"options": "customer",
+				"options": "Customer Group",
 				"width": 100,
 			},
 			"territory": {
 				"label": _("Territory"),
 				"fieldname": "territory",
 				"fieldtype": "Link",
-				"options": "territory",
+				"options": "Territory",
 				"width": 100,
 			},
 			"monthly": {
@@ -735,7 +736,7 @@ class GrossProfitGenerator(object):
 	def load_invoice_items(self):
 		conditions = ""
 		if self.filters.company:
-			conditions += " and company = %(company)s"
+			conditions += " and `tabSales Invoice`.company = %(company)s"
 		if self.filters.from_date:
 			conditions += " and posting_date >= %(from_date)s"
 		if self.filters.to_date:
